@@ -1,0 +1,282 @@
+JDBC 
+=============
+
+- Java Database Connectivity
+
+- This particular API will be used for interacting your application to the database.
+
+- Using JDBC we can do the manipulation with the database.
+
+- All the classes and interface related to the jdbc api is available in java.sql package.
+
+Steps to creating JDBC Application
+========================
+
+Step 1: import java.sql package
+
+import java.sql.*;
+
+Step 2: Load and register the driver.
+
+Driver : It is an interface between the java application to the database 
+
+- There are around four different type of drivers which are available they are
+
+1. Type 1 
+
+2. Type 2
+
+3. Type 3
+
+4. Type 4  : Thin Driver  
+
+- To load and register the driver we need to call the forName() method of class Class.
+
+- Class is a class in java.lang package
+
+- forName() method is a static method which will accept a string argument which should the class name and it will return a class type object
+
+	Class.forName("org.h2.Driver");
+
+- This method throws an exception of type ClassNotFoundException hence we need to guard with try and catch block.
+
+- The other way to register the driver is calling registerDriver() method of DriverManager class.
+
+	DriverManager.registerDriver("org.h2.Driver");
+
+Step 3: Creating the Connection object
+
+- To create a connection object we need to call the getConnection() method of the DriverManager class.
+
+- This method is also a static method which will return a connection object.
+
+- Connection is an interface in java.sql package.
+
+Syntax
+=======
+
+	Connection conn=DriverManager.getConnection(String url,String username,String password);
+
+Step 4: Create a statement object.
+
+- To execute the query we need to use the Statement object.
+
+- Statement is the interface in java.sql package. From this interface there are two interfaces which are derived from they are 1. PreparedStatement   2.CallableStatement.
+
+- Statement : This object can be used for executing the static queries.
+
+Statement statment=conn.createStatement();
+
+- PreparedStatement : This object can be used for executing the runtime level queries.
+
+PreparedStatement psmt=conn.prepareStatement(string runtimequery);
+
+- CallableStatement : This object can be used for executing the stored procedures of database.
+
+CallableStatement cstatement=conn.prepareCall(string stored_proc_name);
+
+Step 5 : Creating the ResultSet
+
+- ResultSet is the output of the query which is nothing but the data of the table.
+
+- To create the resultset we need to call the executeQuery() method of the statement object.
+
+String query="select * from table_name where id=1";
+System.out.println("Query:"+query);
+ResultSet rs=statement.executeQuery(query);
+
+
+Step 6 : Processing the resultSet
+
+- To process the resultset we need to call the getXXX() method of the resultset.
+
+- Here XXX denotes the data type of that particular column.
+
+Syntax
+======
+
+	while(resultset.next())
+	{
+		System.out.print(resultset.getXXX(column_no));
+	}
+
+resultset.next() -> This will return a boolean value . It returns true if the resultset point having in row. If there are no rows in resultset then it will return false.
+
+Step 7: Closing the statement and Connection object.
+
+stmt.close();
+conn.close();
+
+Demo : Displaying Table Content
+============================
+import java.sql.*;
+
+public class ShowTable 
+{
+	public static void main(String arg[])
+	{
+		
+		try
+		{
+			Class.forName("org.h2.Driver");
+			Connection conn=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/S190038","dteja","dteja");
+			Statement statement=conn.createStatement();
+			ResultSet resultSet=statement.executeQuery("select * from Employee");
+			
+			while(resultSet.next())
+			{
+				System.out.print(resultSet.getInt(1)+":::");
+				System.out.print(resultSet.getString(2)+":::");
+				System.out.print(resultSet.getString(3)+":::");
+				System.out.println(resultSet.getInt(4));
+			}
+			
+			statement.close();
+			resultSet.close();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception Arised:"+e);
+		}
+		
+		
+	}
+}
+
+
+ResultSetMetaData
+====================
+
+- ResultSetMetaData is an object which is to display the meta data information.
+
+- The meta data information for our resultset is column names ,column count and data type also.
+
+ResultSetMetaData rsmd=resultSet.getMetaData();
+
+import java.sql.*;
+
+public class ShowTable 
+{
+	public static void main(String arg[])
+	{
+		
+		try
+		{
+			Class.forName("org.h2.Driver");
+			Connection conn=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/S190038","dteja","dteja");
+			Statement statement=conn.createStatement();
+			ResultSet resultSet=statement.executeQuery("select * from Employee");
+			
+			ResultSetMetaData rsmd=resultSet.getMetaData();
+			
+			int columnCount=rsmd.getColumnCount();
+			
+			for(int count=1;count<=columnCount;count++)
+			{
+				System.out.print(rsmd.getColumnName(count)+":::");
+			}
+			
+			System.out.println("\n=============================================\n");
+			
+			while(resultSet.next())
+			{
+				System.out.print(resultSet.getInt(1)+":::");
+				System.out.print(resultSet.getString(2)+":::");
+				System.out.print(resultSet.getString(3)+":::");
+				System.out.println(resultSet.getInt(4));
+			}
+			
+			statement.close();
+			resultSet.close();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception Arised:"+e);
+		}
+		
+		
+	}
+}
+
+
+PreparedStatement
+===================
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+
+public class PreparedStatementDemo 
+{
+	public static void main(String arg[])
+	{
+		try
+		{
+			Class.forName("org.h2.Driver");
+			Connection conn=DriverManager.getConnection("jdbc:h2:tcp://localhost/~/S190038","dteja","dteja");
+			
+			PreparedStatement psmt=conn.prepareStatement("insert into Employee values(?,?,?,?)");
+			
+			Scanner scanner=new Scanner(System.in);
+			
+			System.out.println("Enter Employee ID:");
+			int empid=scanner.nextInt();
+			System.out.println("Enter Employee Name:");
+			String empname=scanner.next();
+			System.out.println("Enter Employee Address:");
+			String empAddr=scanner.next();
+			System.out.println("Enter Employee Salary:");
+			int salary=scanner.nextInt();
+			
+			psmt.setInt(1, empid);
+			psmt.setString(2, empname);
+			psmt.setString(3, empAddr);
+			psmt.setInt(4, salary);
+			
+			int row_eff=psmt.executeUpdate();
+			
+			if(row_eff>0)
+			{
+				System.out.println("Row is Inserted");
+			}
+			else
+			{
+				System.out.println("Error Occured");
+			}
+			
+			psmt.close();
+			conn.close();
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception Arised:"+e);
+		}
+	}
+}
+
+Note : executeUpdate() method is used when we are trying to execute the DML (Data manipulation language - insert , update , delete) queries.
+
+- executeUpdate() statement will return an integer value.
+
+- public int executeUpdate() 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
