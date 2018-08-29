@@ -1,0 +1,21 @@
+@charset "ISO-8859-1";
+
+/* Styles*/
+
+* {
+	margin:0;
+	padding;
+}
+
+body {
+	font-family:"Open Sans";
+	font-size:14px;
+}
+
+form {
+	padding:20px;
+	background:#408080;
+	color:#fff;
+	-moz-border-radius:4px;
+	-webkit
+}
