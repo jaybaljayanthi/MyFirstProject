@@ -7,8 +7,58 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link href="<c:url value='/resources/css/registration.css'></c:url>" rel="stylesheet">
+<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+		
+		
 
-<link href="<c:url value='/resources/css/register.css'></c:url>'>" rel="stylesheet">
+<script type="text/javascript">
+
+function fillShippingAddress(form){
+	if(form.shippingsame.checked==true){
+		form["shippingaddress.apartmentnumber"].value=form["billingaddress.apartmentnumber"].value;
+		form["shippingaddress.streetname"].value=form["billingaddress.streetname"].value;
+		form["shippingaddress.city"].value=form["billingaddress.city"].value;
+		form["shippingaddress.state"].value=form["billingaddress.state"].value;
+		form["shippingaddress.country"].value=form["billingaddress.country"].value;
+		form["shippingaddress.zipcode"].value=form["billingaddress.zipcode"].value;
+	}
+	if(form.shippingsame.checked==false){
+		form["shippingaddress.apartmentnumber"].value=""
+		form["shippingaddress.streetname"].value=""
+		form["shippingaddress.city"].value=""
+		form["shippingaddress.state"].value=""
+		form["shippingaddress.country"].value""
+		form["shippingaddress.zipcode"].value=""
+	}
+}
+
+
+$(document).ready(function(){
+	$('#form').validate({
+		rules:{
+			firstname:{required:true},
+			lastname:{required:true},
+			phonenumber:{required:true,number:true,minlength:10,maxlength:10},
+			"user.email":{required:true,email:true},
+			"user.password":{required:true,minlength:5,maxlength:10},
+			"billingaddress.apartmentnumber":{required:true},
+			"billingaddress.streetname":{required:true},
+			"billingaddress.state":{required:true},
+			"billingaddress.city":{required:true},
+			"billingaddress.country":{required:true},
+			"billingaddress.zipcode":{required:true,number:true}
+		},
+		messages:{
+			firstname:{required:'Firstname is mandatory'},
+			phonenumber:{required:"Phone number is required"},
+			"user.email":{required:"Email is required",email:"Please enter valid email address"}
+		}
+	})
+})
+
+</script>
 </head>
 <body>
 
@@ -29,7 +79,8 @@
 <b>Login Credentials</b><br>
 <form:label path="user.email">Enter Email</form:label>
 <form:input path="user.email" id="user.email" type="email"/>
-<span style="color:red">${error }</span>
+
+<span style="color:#ADFF2F">${error }</span>
 <form:label path="user.password">Enter Password</form:label>
 <form:input path="user.password" id="user.password" type="password"/>
 
@@ -76,7 +127,7 @@ Check this if shipping address is same as billing address
 <form:label path="shippingaddress.zipcode">Enter Zipcode</form:label>
 <form:input path="shippingaddress.zipcode" id="shippingaddress.zipcode"/>
 <br>
-<input type="submit" value="Register" style="background-color:maroon:">
+<input type="submit" value="Register" style="background-color:#ADFF2F">
 </form:form>
 </div>
 	

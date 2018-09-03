@@ -16,7 +16,7 @@
 				<div class="panel-info">
 					<div class="panel panel-heading">Product Details</div>
 						<div class="panel panel-body">
-								<img src="<c:url value='/resources/images/${productobj.id }.png'></c:url>"><br>
+								<img src="<c:url value='/resources/images/${productobj.id }.png'></c:url>" height="50%" width="50%"><br>
 							<b>Product Name:</b>${productobj.productname }<br>
 							<b>Product Desc:</b>${productobj.productdesc }<br>
 							<b>Price:</b>${productobj.price }<br>
@@ -24,8 +24,9 @@
 							<b>Category:</b>${productobj.category.categoryname }<br>
 							
 							
-							
+							<security:authorize access="hasRole('ROLE_USER')">
 							<button class="btn btn"><span class="glyphicon glyphicon-shopping-cart"></span></button>
+							</security:authorize>
 						</div>
 				</div>
 		</div>

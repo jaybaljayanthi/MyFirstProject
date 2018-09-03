@@ -51,9 +51,20 @@ $(document).ready(function(){
 								<td>${p.price }</td>
 								<td>${p.category.categoryname }
 								<td>
-									<a href="<c:url value='/all/getproduct/${p.id }'></c:url>"><span class="glyphicon glyphicon-info-sign "></span></a>
-									<a href="<c:url value='/admin/deleteproduct/${p.id}'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
-									<a href="<c:url value='/admin/getupdateform/${p.id}'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
+									
+									
+									<a href="<c:url value='/all/getproduct/${p.id }'></c:url>">
+							<span
+								class="glyphicon glyphicon-info-sign"></span></a> 
+								<security:authorize access="hasRole('ROLE_ADMIN')">
+								<a href="<c:url value='/admin/deleteproduct/${p.id }'></c:url>"><span
+								class="glyphicon glyphicon-trash"></span></a> 
+								
+								<a href="<c:url value='/admin/getupdateform/${p.id }'></c:url>"><span
+								class="glyphicon glyphicon-pencil"></span></a>
+								  </security:authorize>
+								  
+								  
 								</td>
 							</tr>
 							</c:forEach>

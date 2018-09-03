@@ -10,6 +10,7 @@
 
 
 <title>Insert title here</title>
+
 </head>
 <body>
 <b>Home Page</b>
@@ -24,31 +25,33 @@
 			</ol>
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
-					<img  src="resources/images/3.jpg"alt="first slide" width="100%">						
+					<img  src="resources/images/fashion.jpg"alt="first slide" width="100%">						
 					  <div class="carousel-caption">
-								<h1>Pathway</h1>
-									<p>Go ahead</p>
+								
+									
 							</div>
 						</div>
 				
 					<div class="item">
-					<img class="img-responsive" src="resources/images/2.jpg"alt="second slide" height="100%" width="100%">
+					<img class="img-responsive" src="resources/images/kid1.jpg"alt="second slide" height="50%" width="100%">
 						
 							<div class="carousel-caption">
-								<h1>Mountain</h1>
-									<p>Climb as far as u can</p>
+								
+									
 							</div>	
 						</div>
 				
 		<div class="item">
-					<img class="img-responsive" src="resources/images/1.jpg" alt="third slide" height="100%" width="100%">
+					<img class="img-responsive" src="resources/images/kids1.jpg" alt="third slide" height="100%" width="100%">
 						
 							<div class="carousel-caption">
-								<h1>Butterfly</h1>
-									<p>Fly like it</p>
+								
+									
 							</div>	
 						</div>
 					</div>	
+					
+					
 				
 				<a class="left carousel-control" href="#carosel" role="button" data-slide="prev">
 				<span class="glyphicon glyphicon-chevron-left"></span>
