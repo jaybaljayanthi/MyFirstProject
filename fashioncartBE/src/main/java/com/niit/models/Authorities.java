@@ -12,6 +12,9 @@ public class Authorities {
 	private int id;
 	private String role;
 	
+	@OneToOne
+	private User user;
+	
 	public int getId() {
 		return id;
 	}
@@ -36,6 +39,5 @@ public class Authorities {
 		this.user = user;
 	}
 
-	@OneToOne
-	private User user;
+	
 }

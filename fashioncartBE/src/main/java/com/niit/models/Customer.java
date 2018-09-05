@@ -1,5 +1,6 @@
 package com.niit.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,11 +15,11 @@ public class Customer {
 	private String firstname;
 	private String lastname;
 	private String phonenumber;
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private User user;
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private BillingAddress billingaddress;
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private ShippingAddress shippingaddress;
 	public int getId() {
 		return id;

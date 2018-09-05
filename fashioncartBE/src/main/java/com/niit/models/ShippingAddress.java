@@ -11,6 +11,12 @@ public class ShippingAddress {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String apartmentnumber;
+	
+	private String streetname;
+	private String city;
+	private String state;
+	private String country;
+	private String zipcode;
 
 	public int getId() {
 		return id;
@@ -54,10 +60,6 @@ public class ShippingAddress {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
-	private String streetname;
-	private String city;
-	private String state;
-	private String country;
-	private String zipcode;
+	
 
 }

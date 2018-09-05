@@ -1,5 +1,6 @@
 package com.niit.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -12,7 +13,8 @@ public class User {
 	private boolean enabled;
 @OneToOne(mappedBy="user")
 	private Customer customer;
-@OneToOne(mappedBy="user")
+
+@OneToOne(mappedBy="user",cascade=CascadeType.ALL)
 
 private Authorities authorities;
 public String getEmail() {
