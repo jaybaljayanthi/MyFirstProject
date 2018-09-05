@@ -16,7 +16,8 @@
 <script type="text/javascript">
 
 function fillShippingAddress(form){
-	if(form.shippingsame.checked==true){
+	if(form.shippingaddressform.checked==true){
+		//shippingaddress is same as billingaddress
 		form["shippingaddress.apartmentnumber"].value=form["billingaddress.apartmentnumber"].value;
 		form["shippingaddress.streetname"].value=form["billingaddress.streetname"].value;
 		form["shippingaddress.city"].value=form["billingaddress.city"].value;
@@ -24,15 +25,16 @@ function fillShippingAddress(form){
 		form["shippingaddress.country"].value=form["billingaddress.country"].value;
 		form["shippingaddress.zipcode"].value=form["billingaddress.zipcode"].value;
 	}
-	if(form.shippingsame.checked==false){
+	if(form.shippingaddressform.checked==false){
 		form["shippingaddress.apartmentnumber"].value=""
 		form["shippingaddress.streetname"].value=""
 		form["shippingaddress.city"].value=""
 		form["shippingaddress.state"].value=""
-		form["shippingaddress.country"].value""
+		form["shippingaddress.country"].value=""
 		form["shippingaddress.zipcode"].value=""
 	}
 }
+
 
 
 $(document).ready(function(){
@@ -51,13 +53,12 @@ $(document).ready(function(){
 			"billingaddress.zipcode":{required:true,number:true}
 		},
 		messages:{
-			firstname:{required:'Firstname is mandatory'},
-			phonenumber:{required:"Phone number is required"},
+			firstname:{required:"Firstname is mandatory"},
+			phonenumber:{required:"Phonenumber is required"},
 			"user.email":{required:"Email is required",email:"Please enter valid email address"}
 		}
 	})
 })
-
 </script>
 </head>
 <body>

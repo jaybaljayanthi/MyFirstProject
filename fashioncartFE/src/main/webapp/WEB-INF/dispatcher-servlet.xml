@@ -10,7 +10,16 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
        
        
-       <mvc:annotation-driven></mvc:annotation-driven>
+       <mvc:annotation-driven>
+       		<mvc:argument-resolvers>
+       			<bean class="org.springframework.security.web.method.annotation.AuthenticationPrincipalArgumentResolver">
+       			
+       			</bean>
+       				
+       	
+       		</mvc:argument-resolvers>
+       
+       </mvc:annotation-driven>
        
        <!-- spring container scans all the classes in the package com.niit.controllers -->
        <!-- if it detect any class annotated with @Controller, @Component, @Repository , @Service ...,

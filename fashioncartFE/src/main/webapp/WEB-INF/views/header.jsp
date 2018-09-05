@@ -69,7 +69,7 @@
 			   </security:authorize>
 			   
 			   <security:authorize access="hasRole('ROLE_USER')">
-			   <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+			   <li><a href="<c:url value='/cart/getcart'></c:url>"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
 			   </security:authorize>
 				
 				
