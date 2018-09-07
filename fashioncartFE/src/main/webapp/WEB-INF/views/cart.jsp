@@ -10,7 +10,7 @@
 <body>
 <div class="container">
 <c:if test="${ !empty(cartItems) }">
-<a href="<c:url value='/cart/clearcart'></c:url>" class="btn btn-danger" pull-left  >
+<a href="<c:url value='/cart/clearcart'></c:url>" class="btn btn-danger" pull-left onClick="alert('Items Removed')" >
 <span class="glyphicon glypicon-remove"></span>
 Clear Cart
 </a>
@@ -29,12 +29,13 @@ Clear Cart
 <td>${cartItem.totalPrice }</td>
 <c:set var="grandTotal" value="${grandTotal + cartItem.totalPrice }"></c:set>
 
-<td><a href="<c:url value='/cart/removecartitem/${cartItem.cartItemId }'></c:url>" class="label label-danger" pull-left >
+<td><a href="<c:url value='/cart/removecartitem/${cartItem.cartItemId }'></c:url>" class="label label-danger" pull-left  onClick="alert('Item Removed')" >
 
 <span class="glyphicon glyphicon-remove" ></span>Remove
 </a></td>
 
 </tr>
+
 </c:forEach>
 </tbody>
 </table>

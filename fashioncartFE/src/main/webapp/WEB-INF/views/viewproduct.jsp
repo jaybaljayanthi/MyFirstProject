@@ -27,11 +27,16 @@
 							<b>Category:</b>${productobj.category.categoryname }<br>
 							
 							
+							<c:if test="${productobj.quantity==0 }">
+							<button class="btn btn-primary btn-lg">Out Of Stock</button>
+							
+							</c:if>
+							<c:if test="${productobj.quantity>0 }">
 							<security:authorize access="hasRole('ROLE_USER')">
-							Enter Quantity:<input type="number" min="1" max="${productobj.id}" name="requestedQuantity">
+							Enter Quantity:<input type="number" min="1" max="${productobj.quantity }" name="requestedQuantity">
 							<button class="btn btn-primary btn-lg" type="submit"><span class="glyphicon glyphicon-shopping-cart">AddToCart</span></button>
 							</security:authorize>
-							
+							</c:if>
 							</form>
 						</div>
 				</div>

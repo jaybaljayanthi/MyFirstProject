@@ -1,13 +1,21 @@
 package com.niit.controller;
 
+import java.security.Principal;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.niit.dao.CartItemDao;
 import com.niit.dao.ProductDao;
+import com.niit.models.CartItem;
 
 
 
@@ -17,16 +25,23 @@ public class HomeController {
 	
 	@Autowired
 	private ProductDao productDao;
+	@Autowired
+	private CartItemDao cartItemDao;
+	
 	public HomeController()
 	{
 		System.out.println("HomeController bean is instantiated");
 	}
 	
 	 @RequestMapping(value="/home")   //  /home - KEY in Handler Map
-		public String homePage(HttpSession session){  //  getHomePage()````````````` is the Value in Handler map
+		public String homePage(HttpSession session,@AuthenticationPrincipal Principal principal){  //  getHomePage()````````````` is the Value in Handler map
 			
 		session.setAttribute("categories",productDao.getAllCategories());
-		 
+		//String email=principal.getName();
+		Authentication auth=SecurityContextHolder.getContext().getAuthentication();
+		String email=auth.getName();
+		 List<CartItem> cartItems=cartItemDao.getCart(email);
+		 session.setAttribute("cartSize",cartItems.size());
 		 System.out.println("homepage is executed");
 			 return "home";   //logical view name
 		}

@@ -1,12 +1,16 @@
 package com.niit.controller;
 
 import java.security.Principal;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +19,7 @@ import com.niit.dao.CartItemDao;
 import com.niit.dao.ProductDao;
 import com.niit.models.CartItem;
 import com.niit.models.Customer;
+import com.niit.models.CustomerOrder;
 import com.niit.models.Product;
 import com.niit.models.ShippingAddress;
 import com.niit.models.User;
@@ -60,7 +65,7 @@ public class CartItemController {
 	}
 	@RequestMapping(value="/cart/getcart")
 
-	public String getCart(@AuthenticationPrincipal Principal principal,Model model) {
+	public String getCart(@AuthenticationPrincipal Principal principal,Model model,HttpSession session) {
 		
 		if(principal==null)
 			return "login";
@@ -68,6 +73,7 @@ public class CartItemController {
 		String email=principal.getName();
 		List<CartItem> cartItems=cartItemDao.getCart(email);
 		model.addAttribute("cartItems",cartItems);
+		session.setAttribute("cartSize", cartItems.size());
 		return "cart";
 	}
 	
@@ -104,4 +110,56 @@ public class CartItemController {
     	return "shippingaddress";
     }
 	
+	@RequestMapping(value="/cart/createorder")
+	public String createCustomerOrder(@ModelAttribute ShippingAddress shippingaddress,Model model,
+			@AuthenticationPrincipal Principal principal,HttpSession session) {
+		
+    	String email=principal.getName();
+    	User user=cartItemDao.getUser(email);
+    	
+    	
+    	Customer customer=user.getCustomer();
+    	customer.setShippingaddress(shippingaddress);
+    	customer.setUser(user);
+    	user.setCustomer(customer);
+    	
+    	
+    	List<CartItem> cartItems=cartItemDao.getCart(email);
+    	
+    	//Calculate grandTotal
+
+    	double grandTotal=0;
+    	for(CartItem cartItem:cartItems ) {
+    		grandTotal=grandTotal+cartItem.getTotalPrice();
+    		
+    	}
+    	//create CustomerOrder object
+    	
+    	CustomerOrder customerOrder=new CustomerOrder();
+    	customerOrder.setPurchaseDate(new Date());
+    	customerOrder.setUser(user);//customerorder-user-customer-shippingaddress
+    	customerOrder.setGrandTotal(grandTotal);
+    	
+    	if(cartItems.size()>0) 
+    		customerOrder=cartItemDao.createCustomerOrder(customerOrder);
+    	
+    	//remove all cartItems from the cartItem table
+    	//decrement the quantity of the product
+    	//add CustomerOrder and List<cartItem>to an model attributes and return "orderDetails"
+    	
+    	for(CartItem cartItem:cartItems ) {
+    		Product product=cartItem.getProduct();
+    		
+    		product.setQuantity(product.getQuantity()-cartItem.getQuantity());
+    		productDao.updateProduct(product);
+    		cartItemDao.removeCartItem(cartItem.getCartItemId());
+    		
+    	}
+    	
+    	model.addAttribute("customerorder",customerOrder);
+    	model.addAttribute("cartItems",cartItems);
+    	session.setAttribute("cartSize", 0);
+		return "orderDetails";
+		
+	}
 }

@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link href="<c:url value='/resources/css/login.css'></c:url>" rel="stylesheet">
+
 </head>
 <body>
 <span style="color:red">${error }</span><br>
