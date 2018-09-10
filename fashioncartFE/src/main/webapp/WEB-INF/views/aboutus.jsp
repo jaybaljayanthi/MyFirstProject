@@ -1,110 +1,87 @@
+<%@ include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
+
+
+
+
+<center><title>About our SK Sports</title></center>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-* {
-    box-sizing: border-box;
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
 }
 
-/* Create two equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 50%;
-    padding: 10px;
+.title {
+  color: grey;
+  font-size: 18px;
 }
 
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-/* Style the buttons */
-.btn {
-    border: none;
-    outline: none;
-    padding: 12px 16px;
-    background-color: #f1f1f1;
-    cursor: pointer;
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
 }
 
-.btn:hover {
-    background-color: #ddd;
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
 }
 
-.btn.active {
-    background-color: #666;
-    color: white;
+button:hover, a:hover {
+  opacity: 0.7;
 }
 </style>
 </head>
 <body>
+<style> 
+body {
+    
+    background-repeat: no-repeat;
+    background-color: light blue;
+}
+</style>
 
-<h2>List View or Grid View</h2>
-
-<p>Click on a button to choose list view or grid view.</p>
-
-<div id="btnContainer">
-<button class="btn" onclick="listView()"><i class="fa fa-bars"></i> List</button> 
-<button class="btn active" onclick="gridView()"><i class="fa fa-th-large"></i> Grid</button>
-</div>
+<h2 style="text-align:center">About Kids Fashion</h2>
+<img src="resources/images/sk.JPG" alt="Fashion" style="width:100%;">
+<br>
+<br>
+<h2 style="text-align:center">Kids Fashion is a online retail shop for all the Kids products and it's well known for the Quality of the products,hassle free Shopping for the players with wide range of collections with World Class standard.With
+various ease of purchasing policy.  </h2>
+<br>
+<br>
+<h2 style="text-align:center;colr:blue">About our CEO</h2>
+<br>
+<br>
 <br>
 
-<div class="row">
-  <div class="column" style="background-color:#aaa;">
-    <h2>Column 1</h2>
-    <p>Some text..</p>
-  </div>
-  <div class="column" style="background-color:#bbb;">
-    <h2>Column 2</h2>
-    <p>Some text..</p>
-  </div>
+<div class="card">
+  <img src="resources/images/mee.JPG" >
+  <h1>JAYANTHI</h1>
+  <p class="title">CEO & Founder of Kids Fashion </p>
+  <p>Chennai</p>
+  <div style="margin: 24px 0;">
+    <a href="#"><i class="fa fa-dribbble"></i></a> 
+    <a href="#"><i class="fa fa-twitter"></i></a>  
+    <a href="#"><i class="fa fa-linkedin"></i></a>  
+    <a href="#"><i class="fa fa-facebook"></i></a> 
+ </div>
+ <p><button>Contact</button></p>
 </div>
-
-<div class="row">
-  <div class="column" style="background-color:#ccc;">
-    <h2>Column 3</h2>
-    <p>Some text..</p>
-  </div>
-  <div class="column" style="background-color:#ddd;">
-    <h2>Column 4</h2>
-    <p>Some text..</p>
-  </div>
-</div>
-
-<script>
-// Get the elements with class="column"
-var elements = document.getElementsByClassName("column");
-
-// Declare a loop variable
-var i;
-
-// List View
-function listView() {
-  for (i = 0; i < elements.length; i++) {
-    elements[i].style.width = "100%";
-  }
-}
-
-// Grid View
-function gridView() {
-  for (i = 0; i < elements.length; i++) {
-    elements[i].style.width = "50%";
-  }
-}
-
-/* Optional: Add active class to the current button (highlight it) */
-var container = document.getElementById("btnContainer");
-var btns = container.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
-</script>
 
 </body>
+
 </html>

@@ -62,13 +62,15 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-
+<center>
 	<div class="container">
 <c:url value="/all/registercustomer" var="url"></c:url>
+
 <form:form modelAttribute="customer" action="${url}" id="form">
 <form:hidden path="id"/>
+<b>REGISTRATION</b><br>
 <form:label path="firstname">Enter Firstname</form:label>
-<form:input path="firstname" id="firstname"/>
+<form:input path="firstname" id="firstname" style="width:50%;"/>
 
 <form:label path="lastname">Enter the Lastname</form:label>
 <form:input path="lastname" id="lastname"/>
@@ -130,10 +132,12 @@ Check this if shipping address is same as billing address
 <br>
 <input type="submit" value="Register" style="background-color:#ADFF2F">
 </form:form>
+
 </div>
 	
 	
 	</div>
-
+	
+</center>
 </body>
 </html>

@@ -126,6 +126,15 @@ public class CartItemController {
     	
     	List<CartItem> cartItems=cartItemDao.getCart(email);
     	
+    	for(CartItem cartItem:cartItems){
+    		Product product=cartItem.getProduct();
+    		if((product.getQuantity()-cartItem.getQuantity())<0){
+    			cartItemDao.removeCartItem(cartItem.getCartItemId());
+    			model.addAttribute("productNA",product);
+    			return "productnotavailable";
+    		}
+    	}
+    	
     	//Calculate grandTotal
 
     	double grandTotal=0;

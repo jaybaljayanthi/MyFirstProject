@@ -10,17 +10,23 @@
 
 </head>
 <body>
-<span style="color:red">${error }</span><br>
-${msg }<br>
-<center><b>Login Page</b></center>
+<center>
+
+
+<b>LOGIN</b><br>
 <c:url value="/j_spring_security_check" var="url"></c:url>
 <form method="post" action="${url }">
-<center>Enter Email :<input type="text" name="j_username"><br></center>
-<br>
-<center>Enter password : <input type="password" name="j_password"></center>
-<br>
-<center><input type="submit" value="Login"></center>
+Enter Email  &nbsp &nbsp &nbsp <input type="text" name="j_username"><br>
+<br><br>
+Enter password  <input type="password" name="j_password">
+<br><br>
+<button> Login </button><br><br>
+
+<span style="color:red">${error }</span><br>
+${msg }<br>
+</center>
 
 </form>
+
 </body>
 </html>

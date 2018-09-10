@@ -36,15 +36,14 @@ public class HomeController {
 	 @RequestMapping(value="/home")   //  /home - KEY in Handler Map
 		public String homePage(HttpSession session,@AuthenticationPrincipal Principal principal){  //  getHomePage()````````````` is the Value in Handler map
 			
-		session.setAttribute("categories",productDao.getAllCategories());
-		//String email=principal.getName();
-		Authentication auth=SecurityContextHolder.getContext().getAuthentication();
-		String email=auth.getName();
-		 List<CartItem> cartItems=cartItemDao.getCart(email);
-		 session.setAttribute("cartSize",cartItems.size());
-		 System.out.println("homepage is executed");
-			 return "home";   //logical view name
-		}
+			 session.setAttribute("categories",productDao.getAllCategories());
+			 if(principal!=null){
+			 String email=principal.getName();
+			 List<CartItem> cartItems=cartItemDao.getCart(email);
+			 session.setAttribute("cartSize",cartItems.size());
+			 }
+			 return "home";
+			 }
 
 	 
 	 @RequestMapping(value="/aboutus")   //  /home - KEY in Handler Map
