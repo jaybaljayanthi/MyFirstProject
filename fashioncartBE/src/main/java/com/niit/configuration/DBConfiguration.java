@@ -17,6 +17,7 @@ import com.niit.models.BillingAddress;
 import com.niit.models.CartItem;
 import com.niit.models.Category;
 import com.niit.models.Customer;
+import com.niit.models.CustomerOrder;
 import com.niit.models.Product;
 import com.niit.models.ShippingAddress;
 import com.niit.models.User;
@@ -61,7 +62,7 @@ public class DBConfiguration {
 		lsf.addProperties(hibernateProperties);
 		
 		
-		Class classess[]=new Class[] {Product.class,Category.class,User.class,Customer.class,Authorities.class,BillingAddress.class,ShippingAddress.class,CartItem.class};
+		Class classess[]=new Class[] {Product.class,Category.class,User.class,Customer.class,Authorities.class,BillingAddress.class,ShippingAddress.class,CartItem.class,CustomerOrder.class};
 		System.out.println("SessionFactory bean"+lsf);
 		return lsf.addAnnotatedClasses(classess).buildSessionFactory();
 	}

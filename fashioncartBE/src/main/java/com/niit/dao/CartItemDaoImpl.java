@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.models.CartItem;
+import com.niit.models.CustomerOrder;
 import com.niit.models.User;
 
 
@@ -55,6 +56,17 @@ public class CartItemDaoImpl implements CartItemDao {
 		CartItem cartItem =(CartItem)session.get(CartItem.class, cartItemId);
 		session.delete(cartItem);
 		
+		
+	}
+
+	@Override
+	public CustomerOrder createCustomerOrder(CustomerOrder customerOrder) {
+		
+		Session session=sessionFactory.getCurrentSession();
+		session.save(customerOrder);
+		//CustomerOrder.user-user obj
+		//user-customer-updated shipping address
+		return customerOrder;
 		
 	}
 

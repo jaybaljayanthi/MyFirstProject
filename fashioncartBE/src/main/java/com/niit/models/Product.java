@@ -22,7 +22,7 @@ public class Product {
 
 	private String productname;
 	
-	@NotEmpty
+	@NotEmpty(message="productdescription is mandatory")
 	private String productdesc;
 	@Min(value=0)
 	private int quantity;
