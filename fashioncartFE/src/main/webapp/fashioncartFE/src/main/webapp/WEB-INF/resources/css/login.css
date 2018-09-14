@@ -1,0 +1,54 @@
+@import "compass";
+@import url(https://fonts.googleapis.com/css?family=Dancing+Script|Roboto);
+*, *:after, *:before{
+  @include box-sizing(border-box);
+}
+
+$primary : #FF4081;
+
+body{
+  background: $primary/ 1.25;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+form{
+  display: none;
+  max-width: 400px;
+  padding: 20px 40px;
+  background: #ff80ff;
+  height: 300px;
+  margin: auto;
+  display: block;
+  @include box-shadow(0 10px 15px rgba(0,0,0,.15));
+  @include transition(.3s);
+  position: relative;
+  @include translateY(-100px);
+  z-index: 500;
+  border:1px solid #eee;
+  
+  
+h1{
+  color: $primary;
+  font-family: 'Dancing Script', cursive;
+}
+.btn{
+  background: #ff8000;
+  padding: 5px;
+  width: 150px;
+  height: 35px;
+  border:1px solid $primary;
+  margin-top: 25px;
+  cursor: pointer;
+  @include transition(.3s);
+  @include box-shadow(0 50px $primary inset);
+  color: #ff00ff;
+  
+    &:hover{
+        @include box-shadow(0 0 $primary inset);
+        color: $primary;
+    }
+    &:focus{
+      outline: none;
+    }
+}
