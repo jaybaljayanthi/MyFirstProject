@@ -33,7 +33,7 @@
 							</c:if>
 							<c:if test="${productobj.quantity>0 }">
 							<security:authorize access="hasRole('ROLE_USER')">
-							Enter Quantity:<input type="number" min="1" max="${productobj.quantity }" name="requestedQuantity">
+							Enter Quantity:<input type="number" value="1" min="1" max="${productobj.quantity }" name="requestedQuantity">
 							<button class="btn btn-primary btn-lg" type="submit"><span class="glyphicon glyphicon-shopping-cart">AddToCart</span></button>
 							</security:authorize>
 							</c:if>

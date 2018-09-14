@@ -23,7 +23,7 @@ $(document).ready(function(){
 <body>
 
 
-		<b>List of Products</b><br>
+		<center><b>List of Products</b></center><br>
 		
 		<!--  ${productsList}-->
 		<div class="container">

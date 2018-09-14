@@ -6,7 +6,7 @@
 
 
 
-<center><title>About our SK Sports</title></center>
+<center><title>About Kids Fashion</title></center>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 .card {
@@ -56,20 +56,20 @@ body {
 </style>
 
 <h2 style="text-align:center">About Kids Fashion</h2>
-<img src="resources/images/sk.JPG" alt="Fashion" style="width:100%;">
+<center><img src="resources/images/style.jpg" alt="Fashion" style="width:50%;"></center>
 <br>
 <br>
-<h2 style="text-align:center">Kids Fashion is a online retail shop for all the Kids products and it's well known for the Quality of the products,hassle free Shopping for the players with wide range of collections with World Class standard.With
-various ease of purchasing policy.  </h2>
+<h2 style="text-align:center"><p>A Fashion cart is a piece of e-commerce software on a web server that allows visitors to an Internet site to select items for eventual purchase for kids.  </h2>
 <br>
 <br>
 <h2 style="text-align:center;colr:blue">About our CEO</h2>
 <br>
 <br>
 <br>
+<div class="container">
 
 <div class="card">
-  <img src="resources/images/mee.JPG" >
+  <img src="resources/images/me1.JPG" >
   <h1>JAYANTHI</h1>
   <p class="title">CEO & Founder of Kids Fashion </p>
   <p>Chennai</p>
@@ -81,7 +81,7 @@ various ease of purchasing policy.  </h2>
  </div>
  <p><button>Contact</button></p>
 </div>
-
+</div>
 </body>
 
 </html>

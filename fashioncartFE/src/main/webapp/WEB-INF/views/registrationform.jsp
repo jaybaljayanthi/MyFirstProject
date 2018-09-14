@@ -68,69 +68,69 @@ $(document).ready(function(){
 
 <form:form modelAttribute="customer" action="${url}" id="form">
 <form:hidden path="id"/>
-<b>REGISTRATION</b><br>
-<form:label path="firstname">Enter Firstname</form:label>
-<form:input path="firstname" id="firstname" style="width:50%;"/>
+<h2><b>REGISTRATION</b></h2><br>
+<form:label path="firstname" align="left">Enter Firstname</form:label>
+<form:input path="firstname" id="firstname"/>
 
-<form:label path="lastname">Enter the Lastname</form:label>
+<form:label path="lastname" align="left">Enter the Lastname</form:label>
 <form:input path="lastname" id="lastname"/>
 
-<form:label path="phonenumber">Enter Phonenumber</form:label>
+<form:label path="phonenumber" align="left">Enter Phonenumber</form:label>
 <form:input path="phonenumber" id="phonenumber"/>
 
 <hr>
-<b>Login Credentials</b><br>
-<form:label path="user.email">Enter Email</form:label>
+<h4><b>Login Credentials</b></h4><br>
+<form:label path="user.email" align="left">Enter Email</form:label>
 <form:input path="user.email" id="user.email" type="email"/>
 
 <span style="color:#ADFF2F">${error }</span>
-<form:label path="user.password">Enter Password</form:label>
+<form:label path="user.password" align="left">Enter Password</form:label>
 <form:input path="user.password" id="user.password" type="password"/>
 
 <form:hidden path="user.authorities.role" value="ROLE_USER"/>
 <hr>
-<b>Billing Address</b><br>
-<form:label path="billingaddress.apartmentnumber">Enter Apartmentnumber</form:label>
+<h4><b>Billing Address</b></h4><br>
+<form:label path="billingaddress.apartmentnumber" align="left">Enter Apartmentnumber</form:label>
 <form:input path="billingaddress.apartmentnumber" id="billingaddress.apartmentnumber"/>
 
-<form:label path="billingaddress.streetname">Enter StreetName</form:label>
+<form:label path="billingaddress.streetname" align="left">Enter StreetName</form:label>
 <form:input path="billingaddress.streetname" id="billingaddress.streetname"/>
 
-<form:label path="billingaddress.city">Enter City</form:label>
+<form:label path="billingaddress.city" align="left">Enter City</form:label>
 <form:input path="billingaddress.city" id="billingaddress.city"/>
 
-<form:label path="billingaddress.state">Enter State</form:label>
+<form:label path="billingaddress.state" align="left">Enter State</form:label>
 <form:input path="billingaddress.state" id="billingaddress.state"/>
 
-<form:label path="billingaddress.country">Enter Country</form:label>
+<form:label path="billingaddress.country" align="left">Enter Country</form:label>
 <form:input path="billingaddress.country" id="billingaddress.country"/>
 
-<form:label path="billingaddress.zipcode">Enter Zipcode</form:label>
+<form:label path="billingaddress.zipcode" align="left">Enter Zipcode</form:label>
 <form:input path="billingaddress.zipcode" id="billingaddress.zipcode"/>
 
 <hr>
-<b>Shipping Address</b><br>
-Check this if shipping address is same as billing address
+<h4><b>Shipping Address</b></h4><br>
+<h5>Check this if shipping address is same as billing address</h5>
 <input type="checkbox" onclick="fillShippingAddress(this.form)" id="shippingaddressform">
-<form:label path="shippingaddress.apartmentnumber">Enter Housenumber</form:label>
+<form:label path="shippingaddress.apartmentnumber" align="left">Enter Housenumber</form:label>
 <form:input path="shippingaddress.apartmentnumber" id="shippingaddress.apartmentnumber"/>
 
-<form:label path="shippingaddress.streetname">Enter Streetname</form:label>
+<form:label path="shippingaddress.streetname" align="left">Enter Streetname</form:label>
 <form:input path="shippingaddress.streetname" id="shippingaddress.streetname"/>
 
-<form:label path="shippingaddress.city">Enter City</form:label>
+<form:label path="shippingaddress.city" align="left">Enter City</form:label>
 <form:input path="shippingaddress.city" id="shippingaddress.city"/>
 
-<form:label path="shippingaddress.state">Enter State</form:label>
+<form:label path="shippingaddress.state" align="left">Enter State</form:label>
 <form:input path="shippingaddress.state" id="shippingaddress.state"/>
 
-<form:label path="shippingaddress.country">Enter Country</form:label>
+<form:label path="shippingaddress.country" align="left">Enter Country</form:label>
 <form:input path="shippingaddress.country" id="shippingaddress.country"/>
 
-<form:label path="shippingaddress.zipcode">Enter Zipcode</form:label>
+<form:label path="shippingaddress.zipcode" align="left">Enter Zipcode</form:label>
 <form:input path="shippingaddress.zipcode" id="shippingaddress.zipcode"/>
 <br>
-<input type="submit" value="Register" style="background-color:#ADFF2F">
+<button>Register</button><br><br>
 </form:form>
 
 </div>

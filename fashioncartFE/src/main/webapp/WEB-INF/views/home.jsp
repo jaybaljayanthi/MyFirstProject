@@ -13,7 +13,7 @@
 
 </head>
 <body>
-<b>Home Page</b>
+
 
 			<div class="container">
 		<div id="carosel" class="carousel slide" data-ride="carousel">

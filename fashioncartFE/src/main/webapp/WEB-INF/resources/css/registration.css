@@ -13,8 +13,8 @@ body {
 
 form {
   padding: 80px;
-  background: #6acfd5;
-  color: #008080;
+  background: #ecf091;
+  color: #43bc6d;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
@@ -48,4 +48,24 @@ form button {
 }
 form .error {
   color: #ff0000;
+}
+.btn{
+  background: #1cdf7d;
+  padding: 5px;
+  width: 150px;
+  height: 35px;
+  border:1px solid $primary;
+  margin-top: 25px;
+  cursor: pointer;
+  @include transition(.3s);
+  @include box-shadow(0 50px $primary inset);
+  color: #ff00ff;
+  
+    &:hover{
+        @include box-shadow(0 0 $primary inset);
+        color: $primary;
+    }
+    &:focus{
+      outline: none;
+    }
 }
