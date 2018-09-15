@@ -66,6 +66,7 @@
 	
 				<security:authorize access="hasRole('ROLE_ADMIN')">
 			   <li><a href="<c:url value='/admin/getproductform'></c:url>">Add Product</a></li>
+			   <li><a href="<c:url value='/admin/getallcategories'></c:url>">List of Categories</a></li>
 			   </security:authorize>
 			   
 			   <security:authorize access="hasRole('ROLE_USER')">
