@@ -41,7 +41,7 @@
 								<a href="<c:url value='/admin/deletecategories/${c.id }'></c:url>"><span
 								class="glyphicon glyphicon-trash"></span></a> 
 								
-								<a href="<c:url value='/admin/getupdateform/${c.id }'></c:url>"><span
+								<a href="<c:url value='/admin/getupdatecategoryform/${c.id }'></c:url>"><span
 								class="glyphicon glyphicon-pencil"></span></a>
 								  
 								  
@@ -51,6 +51,7 @@
 								</c:forEach>
 								</tbody>
 			</table>
+			<a href="<c:url value='/admin/getcategoryform'></c:url>"> Add Categories</a>
 </div>
 </body>
 </html>

@@ -69,9 +69,7 @@
 			   <li><a href="<c:url value='/admin/getallcategories'></c:url>">List of Categories</a></li>
 			   </security:authorize>
 			   
-			   <security:authorize access="hasRole('ROLE_USER')">
-			   <li><a href="<c:url value='/cart/getcart'></c:url>"><span class="glyphicon glyphicon-shopping-cart"></span>(${cartSize })</a></li>
-			   </security:authorize>
+			   
 				
 				
 				<c:if test="${pageContext.request.userPrincipal.name==null }">
@@ -83,6 +81,10 @@
 				<li><a href="#">Welcome ${pageContext.request.userPrincipal.name }</a></li>
 				<li><a href="<c:url value='/j_spring_security_logout'></c:url>">Sign out</a></li>
 			    </c:if>
+			    
+			    <security:authorize access="hasRole('ROLE_USER')">
+			   <li><a href="<c:url value='/cart/getcart'></c:url>"><span class="glyphicon glyphicon-shopping-cart"></span>(${cartSize })</a></li>
+			   </security:authorize>
 			</ul>
 		</nav>
 		
