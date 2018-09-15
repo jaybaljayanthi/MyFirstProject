@@ -62,7 +62,7 @@
 				<a href="<c:url value='/all/searchByCategory?searchCondition=All'></c:url>">All</a>
 				</li>
 					</ul>
-	.			</li>
+				</li>
 	
 				<security:authorize access="hasRole('ROLE_ADMIN')">
 			   <li><a href="<c:url value='/admin/getproductform'></c:url>">Add Product</a></li>

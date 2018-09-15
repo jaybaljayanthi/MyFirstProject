@@ -98,7 +98,14 @@
 
                                 </tbody>
                             </table>
-                           
+                            
+                           <center> <button onclick="myFunction()">Print</button>
+
+<script>
+function myFunction() {
+    window.print();
+}
+</script></center>
                         </div>
 
 
