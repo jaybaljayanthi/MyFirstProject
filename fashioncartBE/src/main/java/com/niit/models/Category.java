@@ -8,12 +8,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Category {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	@NotEmpty
 	private String categoryname ;
 	@OneToMany(mappedBy="category")
 	private List<Product> products;
